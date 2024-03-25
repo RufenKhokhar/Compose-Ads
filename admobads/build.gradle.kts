@@ -1,3 +1,4 @@
+
 plugins {
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.jetbrainsKotlinAndroid)
@@ -37,6 +38,19 @@ android {
     }
     kotlinOptions {
         jvmTarget = "1.8"
+    }
+}
+val androidSourcesJar by tasks.registering(Jar::class) {
+    from(android.sourceSets["main"].java.srcDirs)
+}
+project.afterEvaluate {
+    publishing {
+        publications {
+            create<MavenPublication>("release") {
+                from(components["release"])
+                artifact(androidSourcesJar) // optional sources
+            }
+        }
     }
 }
 
