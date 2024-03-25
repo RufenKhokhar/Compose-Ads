@@ -81,11 +81,6 @@ class MainActivity : ComponentActivity() {
                                     adView.findViewById(R.id.ad_call_to_action)
                                 val mediaView: MediaView = adView.findViewById(R.id.ad_media)
                                 val adIcon: ImageView = adView.findViewById(R.id.ad_app_icon)
-                                actionBtn.text = nativeAd.callToAction
-                                headline.text = nativeAd.headline
-                                body.text = nativeAd.body
-                                mediaView.mediaContent = nativeAd.mediaContent
-                                adIcon.setImageDrawable(nativeAd.icon?.drawable)
                                 (adView as NativeAdView)
                                 adView.mediaView = mediaView
                                 adView.headlineView = headline
@@ -93,6 +88,11 @@ class MainActivity : ComponentActivity() {
                                 adView.callToActionView = actionBtn
                                 adView.iconView = adIcon
                                 adView.setNativeAd(nativeAd)
+                                actionBtn.text = nativeAd.callToAction
+                                headline.text = nativeAd.headline
+                                body.text = nativeAd.body
+                                mediaView.mediaContent = nativeAd.mediaContent
+                                adIcon.setImageDrawable(nativeAd.icon?.drawable)
                                 adView
                             }, modifier = Modifier.fillMaxWidth())
 
@@ -113,8 +113,6 @@ class MainActivity : ComponentActivity() {
                         }
 
                     }
-
-
                 }
             }
         }
